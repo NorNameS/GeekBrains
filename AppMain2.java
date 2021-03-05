@@ -13,7 +13,7 @@ public class AppMain2 {
         task5();
         System.out.println("задание 6: ");
 
-        int[] masTask6 = {2, 1, 1, 1, 2, 2, 10, 1};
+        int[] masTask6 = {2, 2, 2, 1, 2, 2, 10, 1};
 
         System.out.println(task6(masTask6));
 
@@ -106,26 +106,24 @@ public class AppMain2 {
 
     public static boolean task6(int[] mas) {
 
-        for (int i = 0; i < mas.length; ++i) {
-            for (int j = 1; j < mas.length; ++j) {
-                int sumR = 0, sumL = 0,  r = 0;
-                for (int l = 0; l <= j - r;) {
-                    if(sumL >= sumR)
-                    {
-                        sumR += mas[j-r];
-                        ++r;
-                    }
-                    else
-                    {
-                        sumL += mas[l];
-                        ++l;
-                    }
-                }
-                if(sumL == sumR)
-                {
-                    return true;
-                }
+        int r = 0, sumLeft = 0, sumRigth = 0;
+
+        for (int i = 0; i < mas.length - r;) {
+            if (sumLeft <= sumRigth)
+            {
+                sumLeft += mas[i];
+                ++i;
             }
+            else
+            {
+                sumRigth += mas[mas.length - r - 1];
+                ++r;
+            }
+        }
+
+        if(sumLeft == sumRigth)
+        {
+            return true;
         }
 
         return false;
